@@ -153,7 +153,8 @@
       margin: 10px 0;
     }
 
-    .cookie-popup {
+    /* Cookie Consent Popup */
+    #cookieConsent {
       position: fixed;
       bottom: 0;
       left: 0;
@@ -166,22 +167,57 @@
       align-items: center;
     }
 
-    .cookie-popup p {
-      margin-right: 20px;
+    #cookieSettingsModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      color: #333;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
     }
 
-    .cookie-popup button {
-      background-color: #0077b6;
-      border: none;
-      padding: 10px 20px;
-      color: #fff;
-      font-size: 1em;
+    .cookie-switch {
+      display: inline-block;
+      position: relative;
       cursor: pointer;
-      border-radius: 5px;
     }
 
-    .cookie-popup button:hover {
-      background-color: #005f99;
+    .cookie-switch input {
+      display: none;
+    }
+
+    .cookie-slider {
+      width: 34px;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 34px;
+      position: relative;
+      transition: .4s;
+    }
+
+    .cookie-slider:before {
+      content: "";
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      left: 2px;
+      bottom: -3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: .4s;
+    }
+
+    input:checked + .cookie-slider {
+      background-color: #0077b6;
+    }
+
+    input:checked + .cookie-slider:before {
+      transform: translateX(14px);
     }
 
     /* Media Queries */
@@ -271,131 +307,59 @@
   </footer>
 
   <!-- Cookie Consent Banner -->
-<div id="cookieConsent">
-    We use cookies and similar technologies to enhance your experience on our website and analyze traffic, usage, and performance. By clicking "Accept," you consent to the use of cookies as outlined in our Cookie Notice and Privacy Policy. You can modify your privacy settings anytime by clicking "Cookie Settings" or the Cookies link.
+  <div id="cookieConsent">
+    We use cookies and similar technologies to enhance your experience on our website. By clicking "Accept," you consent to the use of cookies. You can modify your settings anytime.
     <button id="acceptCookies">Accept All</button>
     <button id="rejectCookies" class="reject">Reject All</button>
-    <button id="openSettings" class="settings">Cookies Settings</button>
-</div>
+    <button id="openSettings" class="settings">Cookie Settings</button>
+  </div>
 
-<!-- Cookie Settings Modal -->
-<div id="cookieSettingsModal">
-    <div id="cookieSettingsModalContent">
-        <h2>Privacy Preference Center</h2>
+  <!-- Cookie Settings Modal -->
+  <div id="cookieSettingsModal">
+    <h2>Cookie Settings</h2>
+    <p>Manage your cookie preferences below:</p>
+    <label class="cookie-switch">
+      <input type="checkbox" id="analyticsCookies">
+      <span class="cookie-slider"></span>
+      Enable Analytics Cookies
+    </label>
+    <br>
+    <button id="saveSettings">Save Settings</button>
+    <button id="closeSettings">Close</button>
+  </div>
 
-        <!-- Manage Preferences Section -->
-        <div class="manage-preferences">
-            <h3>Manage Approval Preferences</h3>
-
-            <div class="cookie-option">
-                <label for="necessaryCookies">Exactly Necessary Cookies</label>
-                <span class="cookie-switch">
-                    <input type="checkbox" id="necessaryCookies" checked disabled>
-                    <span class="cookie-slider round"></span>
-                </span>
-            </div>
-            <div class="cookie-option">
-                <label for="performanceCookies">Performance Cookies</label>
-                <span class="cookie-switch">
-                    <input type="checkbox" id="performanceCookies">
-                    <span class="cookie-slider round"></span>
-                </span>
-            </div>
-            <div class="cookie-option">
-                <label for="functionalCookies">Functional Cookies</label>
-                <span class="cookie-switch">
-                    <input type="checkbox" id="functionalCookies">
-                    <span class="cookie-slider round"></span>
-                </span>
-            </div>
-            <div class="cookie-option">
-                <label for="targetingCookies">Targeting and Promotion Cookies</label>
-                <span class="cookie-switch">
-                    <input type="checkbox" id="targetingCookies">
-                    <span class="cookie-slider round"></span>
-                </span>
-            </div>
-            <div class="cookie-option">
-                <label for="statisticalCookies">Statistical Cookies</label>
-                <span class="cookie-switch">
-                    <input type="checkbox" id="statisticalCookies">
-                    <span class="cookie-slider round"></span>
-                </span>
-            </div>
-        </div>
-
-        <!-- Modal Buttons -->
-        <div id="modalButtons">
-            <button id="saveSettings">Save Settings</button>
-            <button id="allowAll" class="settings">Allow All</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Show cookie consent banner if not accepted/rejected
-    if (!localStorage.getItem('cookieConsent')) {
-        document.getElementById('cookieConsent').style.display = 'block';
+  <!-- JavaScript to handle cookies -->
+  <script>
+    window.onload = function() {
+      if (!localStorage.getItem("cookieAccepted")) {
+        document.getElementById("cookieConsent").style.display = "flex";
+      }
     }
 
-    // Handle Accept All
-    document.getElementById('acceptCookies').onclick = function () {
-        localStorage.setItem('cookieConsent', 'accepted');
-        document.getElementById('cookieConsent').style.display = 'none';
-    };
-
-    // Handle Reject All
-    document.getElementById('rejectCookies').onclick = function () {
-        localStorage.setItem('cookieConsent', 'rejected');
-        document.getElementById('cookieConsent').style.display = 'none';
-    };
-
-    // Open Cookie Settings Modal
-    document.getElementById('openSettings').onclick = function () {
-        document.getElementById('cookieSettingsModal').style.display = 'block';
-    };
-
-    // Save Cookie Settings
-    document.getElementById('saveSettings').onclick = function () {
-        const performance = document.getElementById('performanceCookies').checked;
-        const functional = document.getElementById('functionalCookies').checked;
-        const targeting = document.getElementById('targetingCookies').checked;
-        const statistical = document.getElementById('statisticalCookies').checked;
-
-        localStorage.setItem('performanceCookies', performance);
-        localStorage.setItem('functionalCookies', functional);
-        localStorage.setItem('targetingCookies', targeting);
-        localStorage.setItem('statisticalCookies', statistical);
-
-        document.getElementById('cookieSettingsModal').style.display = 'none';
-    };
-
-    // Allow All Cookies
-    document.getElementById('allowAll').onclick = function () {
-        document.getElementById('performanceCookies').checked = true;
-        document.getElementById('functionalCookies').checked = true;
-        document.getElementById('targetingCookies').checked = true;
-        document.getElementById('statisticalCookies').checked = true;
-
-        document.getElementById('saveSettings').click();
-    };
-
-    // Close modal when clicking outside of it
-    window.onclick = function (event) {
-        const modal = document.getElementById('cookieSettingsModal');
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    };
-
-    // Hide the cookie consent banner if already accepted or rejected
-    if (localStorage.getItem('cookieConsent') === 'accepted') {
-        document.getElementById('cookieConsent').style.display = 'none';
-    } else if (localStorage.getItem('cookieConsent') === 'rejected') {
-        document.getElementById('cookieConsent').style.display = 'none';
+    document.getElementById("acceptCookies").onclick = function() {
+      localStorage.setItem("cookieAccepted", "true");
+      document.getElementById("cookieConsent").style.display = "none";
     }
-</script>
+
+    document.getElementById("rejectCookies").onclick = function() {
+      localStorage.setItem("cookieAccepted", "false");
+      document.getElementById("cookieConsent").style.display = "none";
+    }
+
+    document.getElementById("openSettings").onclick = function() {
+      document.getElementById("cookieSettingsModal").style.display = "block";
+    }
+
+    document.getElementById("closeSettings").onclick = function() {
+      document.getElementById("cookieSettingsModal").style.display = "none";
+    }
+
+    document.getElementById("saveSettings").onclick = function() {
+      const analyticsEnabled = document.getElementById("analyticsCookies").checked;
+      localStorage.setItem("analyticsCookies", analyticsEnabled);
+      document.getElementById("cookieSettingsModal").style.display = "none";
+    }
+  </script>
+
 </body>
-
 </html>
-
