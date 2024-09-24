@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Creative Website Design</title>
+  
+  <!-- Font & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff758c 10%, #ff7eb3 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    header {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+    }
+
+    .cookie-popup {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cookie-popup p {
+      margin-right: 20px;
+    }
+
+    .cookie-popup button {
+      background-color: #ff7eb3;
+      border: none;
+      padding: 10px 20px;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .cookie-popup button:hover {
+      background-color: #ff4f7b;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 10px;
+    }
+
+    footer p {
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="logo">Creative Web Design</header>
+  <p>Welcome to our innovative platform where design meets functionality.</p>
+
+  <!-- Cookie Popup -->
+  <div class="cookie-popup" id="cookiePopup">
+    <p>This website uses cookies to ensure you get the best experience.</p>
+    <button onclick="acceptCookies()">Accept</button>
+  </div>
+
+  <footer>
+    <p>© 2024 Creative Web Design. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript to Handle Cookies -->
+  <script>
+    // Function to show cookie popup if not accepted
+    window.onload = function() {
+      if (!localStorage.getItem("cookieAccepted")) {
+        document.getElementById("cookiePopup").style.display = "flex";
+      }
+    }
+
+    // Function to accept cookies
+    function acceptCookies() {
+      localStorage.setItem("cookieAccepted", "true");
+      document.getElementById("cookiePopup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
