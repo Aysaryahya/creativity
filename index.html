@@ -61,22 +61,24 @@
         #cookieSettingsModalContent {
             background-color: #fff;
             margin: auto;
-            padding: 20px;
+            padding: 15px;
             border: 1px solid #888;
-            width: 50%;
+            width: 40%; /* Reduced width */
             position: relative;
-            top: 10vh;
+            top: 20vh; /* Adjusted top position */
             color: #000;
             text-align: left; /* Align text to the left for better readability */
+            border-radius: 10px; /* Added rounded corners for a smoother look */
         }
         #cookieSettingsModalContent h2 {
             text-align: center;
             color: #0056b3;
             margin-bottom: 10px;
+            font-size: 1.5em; /* Adjusted font size */
         }
         /* Paragraph and Manage Preferences Section */
         .cookie-text {
-            font-size: 14px;
+            font-size: 12px; /* Reduced font size */
             margin-bottom: 20px;
         }
         .manage-preferences {
@@ -85,6 +87,7 @@
         /* Cookie Options */
         .cookie-option {
             margin-bottom: 10px;
+            font-size: 12px; /* Reduced font size */
         }
         .cookie-option label {
             font-weight: bold;
@@ -92,8 +95,8 @@
         .cookie-switch {
             position: relative;
             display: inline-block;
-            width: 60px;
-            height: 34px;
+            width: 40px; /* Adjusted switch width */
+            height: 20px; /* Adjusted switch height */
         }
         .cookie-switch input {
             opacity: 0;
@@ -109,32 +112,29 @@
             bottom: 0;
             background-color: #ccc;
             transition: .4s;
+            border-radius: 20px; /* Added rounded corners */
         }
         .cookie-slider:before {
             position: absolute;
             content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
+            height: 16px; /* Adjusted switch knob size */
+            width: 16px; /* Adjusted switch knob size */
+            left: 2px; /* Adjusted knob position */
+            bottom: 2px; /* Adjusted knob position */
             background-color: white;
             transition: .4s;
+            border-radius: 50%; /* Added rounded corners */
         }
         input:checked + .cookie-slider {
             background-color: #0056b3;
         }
         input:checked + .cookie-slider:before {
-            transform: translateX(26px);
-        }
-        .cookie-slider.round {
-            border-radius: 34px;
-        }
-        .cookie-slider.round:before {
-            border-radius: 50%;
+            transform: translateX(20px); /* Adjusted knob slide distance */
         }
         /* Save/Reject/Allow Buttons */
         #modalButtons {
             text-align: center;
+            margin-top: 10px; /* Added margin */
         }
     </style>
 </head>
@@ -242,18 +242,20 @@
     </div>
 
     <script>
-        // Show cookie consent banner if not accepted/rejected
-        if (!localStorage.getItem('cookieConsent')) {
-            document.getElementById('cookieConsent').style.display = 'block';
-        }
+        // Show cookie consent banner if consent not given
+        window.onload = function() {
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('cookieConsent').style.display = 'block';
+            }
+        };
 
-        // Handle Accept All
+        // Accept all cookies
         document.getElementById('acceptCookies').onclick = function() {
             localStorage.setItem('cookieConsent', 'accepted');
             document.getElementById('cookieConsent').style.display = 'none';
         };
 
-        // Handle Reject All
+        // Reject all cookies
         document.getElementById('rejectCookies').onclick = function() {
             localStorage.setItem('cookieConsent', 'rejected');
             document.getElementById('cookieConsent').style.display = 'none';
@@ -266,13 +268,11 @@
 
         // Close settings modal on save
         document.getElementById('saveSettings').onclick = function() {
-            // Logic to save the settings goes here
             document.getElementById('cookieSettingsModal').style.display = 'none';
         };
 
         // Allow all cookies
         document.getElementById('allowAll').onclick = function() {
-            // Logic to accept all cookies goes here
             localStorage.setItem('cookieConsent', 'accepted');
             document.getElementById('cookieSettingsModal').style.display = 'none';
         };
@@ -280,7 +280,6 @@
         // Handle declining all cookies
         document.getElementById('declineAllCookies').onclick = function() {
             if (this.checked) {
-                // Logic to decline all cookies goes here
                 document.getElementById('performanceCookies').checked = false;
                 document.getElementById('functionalCookies').checked = false;
                 document.getElementById('targetingCookies').checked = false;
