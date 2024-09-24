@@ -157,8 +157,8 @@
     <!-- Cookie Settings Modal -->
     <div id="cookieSettingsModal">
         <div id="cookieSettingsModalContent">
-            <h2>Privacy Preference Center</h2>
-            <h3>Creativity</h3>
+            <h2>Creativity Center</h2>
+            <h3>Privacy Preference</h3>
             <div class="cookie-text">
                 <p>
                     We use cookies and similar technologies (pixels, labels, local storage, etc.) to provide you with the best experience when you visit our website. 
@@ -217,9 +217,10 @@
                     </span>
                 </div>
                 <div class="cookie-option">
-                    <label for="statisticalCookies">Statistical Cookies</label>
-                    <span class="cookie-switch">
-                        <input type="checkbox" id="statisticalCookies">
+                    <label for="targetingCookies" style="display: none;">Targeting and Promotion Cookies</label>
+                    <span>Targeting and Promotion Cookies</span>
+                        <span class="cookie-switch" onclick="toggleTargetingCookies()">
+                        <input type="checkbox" id="targetingCookies">
                         <span class="cookie-slider round"></span>
                     </span>
                 </div>
