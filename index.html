@@ -9,10 +9,19 @@
             font-family: Arial, sans-serif;
             background-color: #f0f8ff;
             color: #000;
+            text-align: center;
         }
         h1 {
-            text-align: center;
-            margin-top: 20vh;
+            margin-top: 10vh;
+            font-size: 3em;
+        }
+        p.slogan {
+            font-size: 1.5em;
+            margin: 0;
+            color: #0056b3;
+        }
+        #logo {
+            margin: 20px 0;
         }
         #cookieConsent {
             position: fixed;
@@ -21,7 +30,6 @@
             background-color: rgba(0, 0, 128, 0.9);
             color: white;
             padding: 10px;
-            text-align: center;
             z-index: 1000;
         }
         #cookieConsent button {
@@ -59,12 +67,22 @@
             position: relative;
             top: 10vh;
             color: #000;
+            text-align: left; /* Align text to the left for better readability */
         }
         #cookieSettingsModalContent h2 {
             text-align: center;
             color: #0056b3;
+            margin-bottom: 10px;
         }
-
+        /* Paragraph and Manage Preferences Section */
+        .cookie-text {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .manage-preferences {
+            margin-top: 20px;
+        }
+        /* Cookie Options */
         .cookie-option {
             margin-bottom: 10px;
         }
@@ -114,28 +132,18 @@
         .cookie-slider.round:before {
             border-radius: 50%;
         }
-
         /* Save/Reject/Allow Buttons */
         #modalButtons {
             text-align: center;
         }
-        /* Paragraph and Manage Preferences Section */
-        .cookie-text {
-            font-size: 14px;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .manage-preferences {
-            text-align: left;
-            margin-top: 20px;
-        }
-        #cookieSettingsModalContent h2 {
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 <body>
+    <div id="logo">
+        <img src="path_to_your_logo.png" alt="Logo" style="max-width: 200px;">
+    </div>
     <h1>Creativity</h1>
+    <p class="slogan">Where Ideas Come to Life</p>
     <p>This is the beginning of something creative!</p>
 
     <!-- Cookie Consent Banner -->
@@ -149,23 +157,37 @@
     <!-- Cookie Settings Modal -->
     <div id="cookieSettingsModal">
         <div id="cookieSettingsModalContent">
-            <h2>Creativity Privacy Preference Center</h2>
+            <h2>Privacy Preference Center</h2>
+            <h3>Creativity</h3>
             <div class="cookie-text">
                 <p>
-                    We use cookies and similar technologies (pixels, labels, local storage, etc.) to provide you with the best experience when you visit our website.
-                    These technologies may be related to you, your preferences, or your device. This information usually does not directly identify you,
-                    but it contributes to you having a more personalized online experience on our website.
+                    We use cookies and similar technologies (pixels, labels, local storage, etc.) to provide you with the best experience when you visit our website. 
+                    These technologies may be related to you, your preferences, or your device. This information usually does not directly identify you, 
+                    but it contributes to you having a more personalized online experience in Volvo Cars.
                 </p>
                 <p>
-                    We respect your privacy rights. Therefore, you may choose not to allow the use of cookies and other technologies that are absolutely not necessary for
-                    our website to operate. However, blocking some categories may affect your site experience and services that we offer.
+                    We respect your privacy rights. Therefore, you may choose not to allow the use of cookies and other technologies that are absolutely not necessary 
+                    for our website to operate. Click on different category titles to learn more and change the default settings. However, blocking some categories 
+                    may affect your site experience and services that we may offer.
                 </p>
+                <p>
+                    In order to remember the preferences you make, we need to use two different cookies: one of them records your preferences and the other prevents 
+                    the title from being shown again. In this case, several conclusions arise:
+                    <ul>
+                        <li>If you delete all your cookies, you will need to update your preferences again.</li>
+                        <li>If you use a different device or browser, you must restart your preferences.</li>
+                    </ul>
+                </p>
+                <p>
+                    For more information on how we process your personal data, please refer to the <a href="privacy_policy_link.html">Privacy Policy</a> and 
+                    <a href="cookie_notice_link.html">Cookie Notice</a> sections.
+                </p>
+                <p><a href="more_info_link.html">More Info</a></p>
             </div>
 
             <!-- Manage Preferences Section -->
             <div class="manage-preferences">
                 <h3>Manage Approval Preferences</h3>
-
                 <div class="cookie-option">
                     <label for="necessaryCookies">Exactly Necessary Cookies</label>
                     <span class="cookie-switch">
@@ -234,35 +256,17 @@
             document.getElementById('cookieSettingsModal').style.display = 'block';
         };
 
-        // Save Cookie Settings
+        // Save settings
         document.getElementById('saveSettings').onclick = function() {
-            // Retrieve each cookie setting
-            const performance = document.getElementById('performanceCookies').checked;
-            const functional = document.getElementById('functionalCookies').checked;
-            const targeting = document.getElementById('targetingCookies').checked;
-            const statistical = document.getElementById('statisticalCookies').checked;
-
-            // Store them in localStorage (or send to backend)
-            localStorage.setItem('performanceCookies', performance);
-            localStorage.setItem('functionalCookies', functional);
-            localStorage.setItem('targetingCookies', targeting);
-            localStorage.setItem('statisticalCookies', statistical);
-
-            // Close modal and banner
+            // Logic to save the settings goes here
             document.getElementById('cookieSettingsModal').style.display = 'none';
         };
 
-        // Allow All Cookies
+        // Allow all cookies
         document.getElementById('allowAll').onclick = function() {
+            // Logic to accept all cookies goes here
             localStorage.setItem('cookieConsent', 'accepted');
-            localStorage.setItem('performanceCookies', true);
-            localStorage.setItem('functionalCookies', true);
-            localStorage.setItem('targetingCookies', true);
-            localStorage.setItem('statisticalCookies', true);
-
-            // Close modal and banner
             document.getElementById('cookieSettingsModal').style.display = 'none';
-            document.getElementById('cookieConsent').style.display = 'none';
         };
     </script>
 </body>
