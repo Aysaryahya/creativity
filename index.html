@@ -223,6 +223,14 @@
                         <span class="cookie-slider round"></span>
                     </span>
                 </div>
+                <!-- Decline All Option -->
+                <div class="cookie-option">
+                    <label for="declineAllCookies">Decline All Cookies</label>
+                    <span class="cookie-switch">
+                        <input type="checkbox" id="declineAllCookies">
+                        <span class="cookie-slider round"></span>
+                    </span>
+                </div>
             </div>
 
             <!-- Modal Buttons -->
@@ -251,12 +259,12 @@
             document.getElementById('cookieConsent').style.display = 'none';
         };
 
-        // Open Cookie Settings Modal
+        // Open settings modal
         document.getElementById('openSettings').onclick = function() {
             document.getElementById('cookieSettingsModal').style.display = 'block';
         };
 
-        // Save settings
+        // Close settings modal on save
         document.getElementById('saveSettings').onclick = function() {
             // Logic to save the settings goes here
             document.getElementById('cookieSettingsModal').style.display = 'none';
@@ -267,6 +275,17 @@
             // Logic to accept all cookies goes here
             localStorage.setItem('cookieConsent', 'accepted');
             document.getElementById('cookieSettingsModal').style.display = 'none';
+        };
+
+        // Handle declining all cookies
+        document.getElementById('declineAllCookies').onclick = function() {
+            if (this.checked) {
+                // Logic to decline all cookies goes here
+                document.getElementById('performanceCookies').checked = false;
+                document.getElementById('functionalCookies').checked = false;
+                document.getElementById('targetingCookies').checked = false;
+                document.getElementById('statisticalCookies').checked = false;
+            }
         };
     </script>
 </body>
