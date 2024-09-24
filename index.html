@@ -10,6 +10,10 @@
             background-color: #f0f8ff;
             color: #000;
         }
+        h1 {
+            text-align: center;
+            margin-top: 20vh;
+        }
         #cookieConsent {
             position: fixed;
             bottom: 0;
@@ -17,7 +21,6 @@
             background-color: rgba(0, 0, 128, 0.9);
             color: white;
             padding: 10px;
-            display: none;
             text-align: center;
             z-index: 1000;
         }
@@ -35,6 +38,7 @@
         #cookieConsent button.settings {
             background-color: #4caf50;
         }
+
         /* Cookie Settings Modal */
         #cookieSettingsModal {
             display: none;
@@ -48,16 +52,19 @@
         }
         #cookieSettingsModalContent {
             background-color: #fff;
-            margin: 15% auto;
+            margin: auto;
             padding: 20px;
             border: 1px solid #888;
             width: 50%;
+            position: relative;
+            top: 10vh;
             color: #000;
         }
         #cookieSettingsModalContent h2 {
             text-align: center;
             color: #0056b3;
         }
+
         .cookie-option {
             margin-bottom: 10px;
         }
@@ -107,14 +114,28 @@
         .cookie-slider.round:before {
             border-radius: 50%;
         }
+
         /* Save/Reject/Allow Buttons */
         #modalButtons {
             text-align: center;
         }
+        /* Paragraph and Manage Preferences Section */
+        .cookie-text {
+            font-size: 14px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .manage-preferences {
+            text-align: left;
+            margin-top: 20px;
+        }
+        #cookieSettingsModalContent h2 {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to Creativity</h1>
+    <h1>Creativity</h1>
     <p>This is the beginning of something creative!</p>
 
     <!-- Cookie Consent Banner -->
@@ -128,42 +149,61 @@
     <!-- Cookie Settings Modal -->
     <div id="cookieSettingsModal">
         <div id="cookieSettingsModalContent">
-            <h2>Creativity Cookie Settings</h2>
-            <div class="cookie-option">
-                <label for="necessaryCookies">Exactly Necessary Cookies</label>
-                <span class="cookie-switch">
-                    <input type="checkbox" id="necessaryCookies" checked disabled>
-                    <span class="cookie-slider round"></span>
-                </span>
+            <h2>Creativity Privacy Preference Center</h2>
+            <div class="cookie-text">
+                <p>
+                    We use cookies and similar technologies (pixels, labels, local storage, etc.) to provide you with the best experience when you visit our website.
+                    These technologies may be related to you, your preferences, or your device. This information usually does not directly identify you,
+                    but it contributes to you having a more personalized online experience on our website.
+                </p>
+                <p>
+                    We respect your privacy rights. Therefore, you may choose not to allow the use of cookies and other technologies that are absolutely not necessary for
+                    our website to operate. However, blocking some categories may affect your site experience and services that we offer.
+                </p>
             </div>
-            <div class="cookie-option">
-                <label for="performanceCookies">Performance Cookies</label>
-                <span class="cookie-switch">
-                    <input type="checkbox" id="performanceCookies">
-                    <span class="cookie-slider round"></span>
-                </span>
+
+            <!-- Manage Preferences Section -->
+            <div class="manage-preferences">
+                <h3>Manage Approval Preferences</h3>
+
+                <div class="cookie-option">
+                    <label for="necessaryCookies">Exactly Necessary Cookies</label>
+                    <span class="cookie-switch">
+                        <input type="checkbox" id="necessaryCookies" checked disabled>
+                        <span class="cookie-slider round"></span>
+                    </span>
+                </div>
+                <div class="cookie-option">
+                    <label for="performanceCookies">Performance Cookies</label>
+                    <span class="cookie-switch">
+                        <input type="checkbox" id="performanceCookies">
+                        <span class="cookie-slider round"></span>
+                    </span>
+                </div>
+                <div class="cookie-option">
+                    <label for="functionalCookies">Functional Cookies</label>
+                    <span class="cookie-switch">
+                        <input type="checkbox" id="functionalCookies">
+                        <span class="cookie-slider round"></span>
+                    </span>
+                </div>
+                <div class="cookie-option">
+                    <label for="targetingCookies">Targeting and Promotion Cookies</label>
+                    <span class="cookie-switch">
+                        <input type="checkbox" id="targetingCookies">
+                        <span class="cookie-slider round"></span>
+                    </span>
+                </div>
+                <div class="cookie-option">
+                    <label for="statisticalCookies">Statistical Cookies</label>
+                    <span class="cookie-switch">
+                        <input type="checkbox" id="statisticalCookies">
+                        <span class="cookie-slider round"></span>
+                    </span>
+                </div>
             </div>
-            <div class="cookie-option">
-                <label for="functionalCookies">Functional Cookies</label>
-                <span class="cookie-switch">
-                    <input type="checkbox" id="functionalCookies">
-                    <span class="cookie-slider round"></span>
-                </span>
-            </div>
-            <div class="cookie-option">
-                <label for="targetingCookies">Targeting Cookies</label>
-                <span class="cookie-switch">
-                    <input type="checkbox" id="targetingCookies">
-                    <span class="cookie-slider round"></span>
-                </span>
-            </div>
-            <div class="cookie-option">
-                <label for="statisticalCookies">Statistical Cookies</label>
-                <span class="cookie-switch">
-                    <input type="checkbox" id="statisticalCookies">
-                    <span class="cookie-slider round"></span>
-                </span>
-            </div>
+
+            <!-- Modal Buttons -->
             <div id="modalButtons">
                 <button id="saveSettings">Save Settings</button>
                 <button id="allowAll" class="settings">Allow All</button>
@@ -210,7 +250,6 @@
 
             // Close modal and banner
             document.getElementById('cookieSettingsModal').style.display = 'none';
-            document.getElementById('cookieConsent').style.display = 'none';
         };
 
         // Allow All Cookies
