@@ -169,18 +169,21 @@
             margin: 10px 0;
         }
 
-        /* Cookie Consent Styles */
         #cookieConsent {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 128, 0.9);
-            color: white;
-            padding: 10px;
-            text-align: center;
-            z-index: 1000;
-            display: none;
-        }
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 40%; /* Adjust width as needed */
+          background-color: rgba(0, 0, 128, 0.6);
+          color: white;
+          padding: 20px;
+          text-align: center;
+          z-index: 1000;
+          display: none;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+         }
 
         #cookieConsent button {
             background-color: #0056b3;
@@ -514,6 +517,10 @@
 
             // Show the cookie consent bar
             cookieConsent.style.display = 'block';
+
+            // Focus on the cookie consent popup
+            cookieConsent.setAttribute('tabindex', '-1'); // Make it focusable if it's not normally
+            cookieConsent.focus();
 
             // Open the cookie settings modal
             manageCookiesBtn.addEventListener('click', () => {
