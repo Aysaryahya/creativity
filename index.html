@@ -514,13 +514,11 @@
             const savePreferencesBtn = document.getElementById('savePreferences');
             const allowAllCookiesBtn = document.getElementById('allowAllCookies');
             const rejectAllCookiesBtn = document.getElementById('rejectAllCookies');
+            const overlay = document.getElementById('overlay');
 
             // Show the cookie consent popup and overlay
             cookieConsent.style.display = 'block';
             overlay.style.display = 'block';
-            
-            // Show the cookie consent bar
-            cookieConsent.style.display = 'block';
 
             // Focus on the cookie consent popup
             cookieConsent.setAttribute('tabindex', '-1'); // Make it focusable if it's not normally
