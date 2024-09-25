@@ -507,60 +507,57 @@
     <script>
         // JavaScript for cookie consent
         document.addEventListener('DOMContentLoaded', function () {
-            const cookieConsent = document.getElementById('cookieConsent');
-            const acceptCookiesBtn = document.getElementById('acceptCookies');
-            const rejectCookiesBtn = document.getElementById('rejectCookies');
-            const manageCookiesBtn = document.getElementById('manageCookies');
-            const cookieSettingsModal = document.getElementById('cookieSettingsModal');
-            const savePreferencesBtn = document.getElementById('savePreferences');
-            const allowAllCookiesBtn = document.getElementById('allowAllCookies');
-            const rejectAllCookiesBtn = document.getElementById('rejectAllCookies');
+    const cookieConsent = document.getElementById('cookieConsent');
+    const acceptCookiesBtn = document.getElementById('acceptCookies');
+    const rejectCookiesBtn = document.getElementById('rejectCookies');
+    const manageCookiesBtn = document.getElementById('manageCookies');
+    const cookieSettingsModal = document.getElementById('cookieSettingsModal');
+    const savePreferencesBtn = document.getElementById('savePreferences');
+    const allowAllCookiesBtn = document.getElementById('allowAllCookies');
+    const rejectAllCookiesBtn = document.getElementById('rejectAllCookies');
 
-            // Show the cookie consent bar
-            cookieConsent.style.display = 'block';
+    // Show the cookie consent popup as soon as the page loads
+    cookieConsent.style.display = 'block';
 
-            // Open the cookie settings modal
-            manageCookiesBtn.addEventListener('click', () => {
-                cookieSettingsModal.style.display = 'block';
-            });
+    // Focus on the cookie consent popup
+    cookieConsent.setAttribute('tabindex', '-1'); // Make it focusable if it's not normally
+    cookieConsent.focus();
 
-            // Close the cookie settings modal when preferences are saved
-            savePreferencesBtn.addEventListener('click', () => {
-                cookieSettingsModal.style.display = 'none';
-                cookieConsent.style.display = 'none';
-            });
+    // Open the cookie settings modal
+    manageCookiesBtn.addEventListener('click', () => {
+        cookieSettingsModal.style.display = 'block';
+        cookieSettingsModal.focus(); // Set focus on the modal when opened
+    });
 
-            // Allow all cookies
-            allowAllCookiesBtn.addEventListener('click', () => {
-                cookieSettingsModal.style.display = 'none';
-                cookieConsent.style.display = 'none';
-            });
+    // Close the cookie settings modal when preferences are saved
+    savePreferencesBtn.addEventListener('click', () => {
+        cookieSettingsModal.style.display = 'none';
+        cookieConsent.style.display = 'none';
+    });
 
-            // Reject all cookies
-            rejectAllCookiesBtn.addEventListener('click', () => {
-                cookieSettingsModal.style.display = 'none';
-                cookieConsent.style.display = 'none';
-            });
+    // Allow all cookies
+    allowAllCookiesBtn.addEventListener('click', () => {
+        cookieSettingsModal.style.display = 'none';
+        cookieConsent.style.display = 'none';
+    });
 
-            // Accept all cookies
-            acceptCookiesBtn.addEventListener('click', () => {
-                cookieConsent.style.display = 'none';
-            });
+    // Reject all cookies
+    rejectAllCookiesBtn.addEventListener('click', () => {
+        cookieSettingsModal.style.display = 'none';
+        cookieConsent.style.display = 'none';
+    });
 
-            // Reject all cookies
-            rejectCookiesBtn.addEventListener('click', () => {
-                cookieConsent.style.display = 'none';
-            });
-        <script language="javascript" type="text/javascript">
-        <!--
-        function popitup(url) {
-        newwindow=window.open(url,'name','height=200,width=150');
-        if (window.focus) {newwindow.focus()}
-        if (!newwindow.closed) {newwindow.focus()}
-       return false;
-       }
-     // -->
-</script>
+    // Accept all cookies
+    acceptCookiesBtn.addEventListener('click', () => {
+        cookieConsent.style.display = 'none';
+    });
+
+    // Reject all cookies
+    rejectCookiesBtn.addEventListener('click', () => {
+        cookieConsent.style.display = 'none';
+    });
+});
+   
     </script>
 
 </body>
