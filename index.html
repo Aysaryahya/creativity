@@ -25,19 +25,18 @@
             background-size: cover;
             background-attachment: fixed;
             padding: 0 20px;
-            height: 100vh;
-            position: relative;
+            height: 100vh; /* Ensures it covers the full screen */
         }
         
         body:after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: -1;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* Black with 30% opacity */
+        z-index: -1; /* Ensures it's behind the content */
         }
 
         .container {
@@ -46,11 +45,12 @@
         }
 
         header {
-            background-color: #FFD700;
+            background-color: #FFD700; /* Light Yellow-Gold */
             color: #fff;
             padding: 20px 0;
             text-align: center;
-            width: 100%;
+            width: 100%; /* Full width */
+            margin: 0;   /* Remove default margins */
         }
 
         header h1 {
@@ -172,18 +172,14 @@
         /* Cookie Consent Styles */
         #cookieConsent {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40%;
+            bottom: 0;
+            width: 100%;
             background-color: rgba(0, 0, 128, 0.9);
             color: white;
-            padding: 20px;
+            padding: 10px;
             text-align: center;
             z-index: 1000;
             display: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         #cookieConsent button {
@@ -212,7 +208,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 300, 0.2);
         }
 
         #cookieSettingsModalContent {
@@ -295,6 +291,7 @@
             text-align: center;
         }
 
+        /* Paragraph and Manage Preferences Section */
         .cookie-text {
             font-size: 14px;
             margin-bottom: 20px;
@@ -325,6 +322,38 @@
                 width: 80%;
             }
         }
+
+        /* Additional E-Commerce Design */
+        .products {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .product-card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-title {
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .price {
+            color: #68b8d0;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -353,18 +382,14 @@
     <!-- About Section -->
     <section>
         <h2>About Us</h2>
-        <div class="about container">
-            <div>
-                <h3>Our Mission</h3>
-                <p>To empower individuals and businesses to unleash their creative potential through innovative technology and solutions.</p>
-            </div>
+        <div class="about">
             <div>
                 <h3>Our Vision</h3>
-                <p>To be the leading provider of creative technology solutions, inspiring creativity and innovation worldwide.</p>
+                <p>We aim to inspire creativity and innovation in all digital platforms, ensuring users engage effortlessly.</p>
             </div>
             <div>
-                <h3>Our Values</h3>
-                <p>Creativity, innovation, and customer-centric solutions guide everything we do.</p>
+                <h3>Our Mission</h3>
+                <p>Delivering cutting-edge solutions and exceptional user experiences for modern businesses and creatives.</p>
             </div>
         </div>
     </section>
@@ -372,143 +397,158 @@
     <!-- Services Section -->
     <section>
         <h2>Our Services</h2>
-        <div class="services container">
+        <div class="services">
             <div>
-                <h3>Web Development</h3>
-                <p>We build responsive, fast, and reliable websites that deliver a seamless user experience.</p>
+                <h3>Web Design</h3>
+                <p>Creating visually appealing and responsive websites that enhance your digital presence.</p>
             </div>
             <div>
-                <h3>Digital Marketing</h3>
-                <p>Our digital marketing strategies are designed to grow your online presence and drive success.</p>
+                <h3>E-commerce Solutions</h3>
+                <p>Innovative e-commerce platforms that provide seamless online shopping experiences.</p>
             </div>
             <div>
-                <h3>Creative Design</h3>
-                <p>Our creative design solutions bring your vision to life through cutting-edge technology and innovation.</p>
+                <h3>Brand Strategy</h3>
+                <p>Helping you build a brand that resonates with your target audience.</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- E-Commerce Products Section -->
+    <section>
+        <h2>Our Service</h2>
+        <div class="products">
+            <div class="product-card">
+                <img src="https://raw.githubusercontent.com/Aysaryahya/creativity/main/o.jfif" alt="Service 1">
+                <div class="product-title">Service 1</div>
+                <div class="price">$19.99</div>
+            </div>
+            <div class="product-card">
+                <img src="https://raw.githubusercontent.com/Aysaryahya/creativity/main/y.jfif" alt="Service 2">
+                <div class="product-title">Service 1</div>
+                <div class="price">$14.99</div>
+            </div>
+            <div class="product-card">
+                <img src="https://raw.githubusercontent.com/Aysaryahya/creativity/main/q.jfif" alt="Service 3">
+                <div class="product-title">Service 3</div>
+                <div class="price">$9.99</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
     <section>
         <h2>Contact Us</h2>
         <div class="contact-form">
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <textarea placeholder="Message"></textarea>
-            <button type="submit">Send Message</button>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </div>
     </section>
 
     <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 Creativity | All Rights Reserved</p>
+        <div class="container">
+            <p>&copy; 2024 Creativity - All Rights Reserved</p>
+        </div>
     </footer>
 
     <!-- Cookie Consent -->
     <div id="cookieConsent">
-        <h3>We use cookies!</h3>
-        <p>We use cookies to ensure you get the best experience on our website.</p>
-        <button id="acceptCookies">Accept Cookies</button>
-        <button id="rejectCookies" class="reject">Reject Cookies</button>
-        <button id="manageCookies" class="settings">Manage Cookies</button>
+        <span>This website uses cookies to enhance user experience. Do you consent to our cookies?</span>
+        <button id="acceptCookies">Accept All</button>
+        <button id="rejectCookies" class="reject">Reject All</button>
+        <button id="manageCookies" class="settings">Manage Preferences</button>
     </div>
 
     <!-- Cookie Settings Modal -->
     <div id="cookieSettingsModal">
         <div id="cookieSettingsModalContent">
-            <h2>Cookie Preferences</h2>
+            <h2>Manage Cookie Preferences</h2>
             <div class="cookie-option">
-                <label for="necessaryCookies">Necessary Cookies</label>
-                <div class="cookie-switch">
-                    <input type="checkbox" id="necessaryCookies" checked disabled>
+                <label for="essentialCookies">Essential Cookies</label>
+                <label class="cookie-switch">
+                    <input type="checkbox" id="essentialCookies" checked disabled>
                     <span class="cookie-slider round"></span>
-                </div>
-                <p class="cookie-text">These cookies are essential for the website to function and cannot be turned off.</p>
+                </label>
+                <p class="cookie-text">Essential for site functionality and cannot be disabled.</p>
             </div>
             <div class="cookie-option">
                 <label for="analyticsCookies">Analytics Cookies</label>
-                <div class="cookie-switch">
+                <label class="cookie-switch">
                     <input type="checkbox" id="analyticsCookies">
                     <span class="cookie-slider round"></span>
-                </div>
-                <p class="cookie-text">These cookies help us understand how visitors interact with the website by collecting and reporting information anonymously.</p>
+                </label>
+                <p class="cookie-text">Helps us understand how you use the site.</p>
+            </div>
+            <div class="cookie-option">
+                <label for="marketingCookies">Marketing Cookies</label>
+                <label class="cookie-switch">
+                    <input type="checkbox" id="marketingCookies">
+                    <span class="cookie-slider round"></span>
+                </label>
+                <p class="cookie-text">Used to deliver ads relevant to you.</p>
             </div>
             <div id="modalButtons">
                 <button id="savePreferences">Save Preferences</button>
-                <button id="allowAllCookies" class="settings">Allow All Cookies</button>
-                <button id="rejectAllCookies" class="reject">Reject All Cookies</button>
+                <button id="rejectAllCookies" class="reject">Reject All</button>
+                <button id="allowAllCookies">Allow All</button>
             </div>
         </div>
     </div>
 
     <!-- JavaScript -->
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const cookieConsent = document.getElementById('cookieConsent');
-        const acceptCookiesBtn = document.getElementById('acceptCookies');
-        const rejectCookiesBtn = document.getElementById('rejectCookies');
-        const manageCookiesBtn = document.getElementById('manageCookies');
-        const cookieSettingsModal = document.getElementById('cookieSettingsModal');
-        const savePreferencesBtn = document.getElementById('savePreferences');
-        const allowAllCookiesBtn = document.getElementById('allowAllCookies');
-        const rejectAllCookiesBtn = document.getElementById('rejectAllCookies');
-        const overlay = document.createElement('div');
+        // JavaScript for cookie consent
+        document.addEventListener('DOMContentLoaded', function () {
+            const cookieConsent = document.getElementById('cookieConsent');
+            const acceptCookiesBtn = document.getElementById('acceptCookies');
+            const rejectCookiesBtn = document.getElementById('rejectCookies');
+            const manageCookiesBtn = document.getElementById('manageCookies');
+            const cookieSettingsModal = document.getElementById('cookieSettingsModal');
+            const savePreferencesBtn = document.getElementById('savePreferences');
+            const allowAllCookiesBtn = document.getElementById('allowAllCookies');
+            const rejectAllCookiesBtn = document.getElementById('rejectAllCookies');
 
-        // Create overlay for blocking interaction
-        overlay.id = 'overlay';
-        document.body.appendChild(overlay);
+            // Show the cookie consent bar
+            cookieConsent.style.display = 'block';
 
-        // Show the cookie consent popup and the overlay
-        cookieConsent.style.display = 'block';
-        overlay.style.display = 'block';
+            // Open the cookie settings modal
+            manageCookiesBtn.addEventListener('click', () => {
+                cookieSettingsModal.style.display = 'block';
+            });
 
-        // Focus on the cookie consent popup
-        cookieConsent.setAttribute('tabindex', '-1'); // Make it focusable
-        cookieConsent.focus();
+            // Close the cookie settings modal when preferences are saved
+            savePreferencesBtn.addEventListener('click', () => {
+                cookieSettingsModal.style.display = 'none';
+                cookieConsent.style.display = 'none';
+            });
 
-        // Prevent interaction with the background
-        overlay.addEventListener('click', (e) => e.stopPropagation());
+            // Allow all cookies
+            allowAllCookiesBtn.addEventListener('click', () => {
+                cookieSettingsModal.style.display = 'none';
+                cookieConsent.style.display = 'none';
+            });
 
-        // Open the cookie settings modal
-        manageCookiesBtn.addEventListener('click', () => {
-            cookieSettingsModal.style.display = 'block';
-            cookieSettingsModal.focus(); // Focus on the modal
+            // Reject all cookies
+            rejectAllCookiesBtn.addEventListener('click', () => {
+                cookieSettingsModal.style.display = 'none';
+                cookieConsent.style.display = 'none';
+            });
+
+            // Accept all cookies
+            acceptCookiesBtn.addEventListener('click', () => {
+                cookieConsent.style.display = 'none';
+            });
+
+            // Reject all cookies
+            rejectCookiesBtn.addEventListener('click', () => {
+                cookieConsent.style.display = 'none';
+            });
         });
-
-        // Close the modal and hide everything when preferences are saved
-        savePreferencesBtn.addEventListener('click', () => {
-            cookieSettingsModal.style.display = 'none';
-            cookieConsent.style.display = 'none';
-            overlay.style.display = 'none'; // Hide overlay
-        });
-
-        // Accept all cookies
-        acceptCookiesBtn.addEventListener('click', () => {
-            cookieConsent.style.display = 'none';
-            overlay.style.display = 'none'; // Hide overlay
-        });
-
-        // Reject all cookies
-        rejectCookiesBtn.addEventListener('click', () => {
-            cookieConsent.style.display = 'none';
-            overlay.style.display = 'none'; // Hide overlay
-        });
-
-        // Allow all cookies
-        allowAllCookiesBtn.addEventListener('click', () => {
-            cookieSettingsModal.style.display = 'none';
-            cookieConsent.style.display = 'none';
-            overlay.style.display = 'none'; // Hide overlay
-        });
-
-        // Reject all cookies
-        rejectAllCookiesBtn.addEventListener('click', () => {
-            cookieSettingsModal.style.display = 'none';
-            cookieConsent.style.display = 'none';
-            overlay.style.display = 'none'; // Hide overlay
-        });
-    });
-</script>
+    </script>
 
 </body>
 </html>
